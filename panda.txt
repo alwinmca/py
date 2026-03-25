@@ -1,0 +1,46 @@
+import pandas as pd
+
+# -------------------------------
+# Create Student Data
+# -------------------------------
+
+data = {
+    "Name":["Anu", "Banu", "Chitra", "Divya", "Sruthi", "priya"],
+    "Department":["CS", "CT", "CS", "IT", "CT", "CS"],
+    "Maths":[85, 78, 92, 74, 88, 90],
+    "Science":[80, 82, 95, 70, 86, 91],
+    "English":[75, 79, 88, 72, 84, 87]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+print("Student DataFrame:\n")
+print(df)
+
+# -------------------------------
+# Summary Statistics
+# -------------------------------
+
+print("\nMean Marks:")
+print(df[["Maths", "Science", "English"]].mean())
+
+print("\nMaximum Marks:")
+print(df[["Maths", "Science", "English"]].max())
+
+print("\nMinimum Marks:")
+print(df[["Maths", "Science", "English"]].min())
+
+# -------------------------------
+# Describe Method
+# -------------------------------
+
+print("\nDescribe Statistics:")
+print(df.describe())
+
+# -------------------------------
+# Value Counts
+# -------------------------------
+
+print("\nDepartment Count:")
+print(df["Department"].value_counts())

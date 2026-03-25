@@ -1,0 +1,41 @@
+class Employee:
+    def __init__(self, emp_id, name, salary, performance):
+        self.emp_id = emp_id
+        self.name = name
+        self.salary = salary
+        self.performance = performance
+
+  
+    def calculate_bonus(self):
+        if self.performance == "Excellent":
+            bonus = self.salary * 0.20
+        elif self.performance == "Good":
+            bonus = self.salary * 0.10
+        elif self.performance == "Average":
+            bonus = self.salary * 0.05
+        else:
+            bonus = 0
+        return bonus
+
+  
+    def display_details(self):
+        print("\nEmployee Details")
+        print("Employee ID:", self.emp_id)
+        print("Name:", self.name)
+        print("Salary:", self.salary)
+        print("Performance:", self.performance)
+        print("Bonus:", self.calculate_bonus())
+
+
+# -------- Taking input from user --------
+emp_id = input("Enter Employee ID: ")
+name = input("Enter Employee Name: ")
+salary = float(input("Enter Employee Salary: "))
+performance = input("Enter Performance (Excellent/Good/Average/Poor): ")
+
+# -------- Creating object --------
+emp = Employee(emp_id, name, salary, performance)
+
+# -------- Display details --------
+emp.display_details()
+

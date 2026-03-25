@@ -1,0 +1,30 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read CSV file
+data = pd.read_csv("book1.csv")
+# Extract columns
+months = data["Month"]
+expenses = data["Expenses"]
+
+# -------- Line Chart --------
+plt.figure()
+plt.plot(months, expenses, marker='o', label="Monthly Expenses")
+plt.title("Monthly Expense Trend (Line Chart)")
+plt.xlabel("Month")
+plt.ylabel("Expenses")
+plt.legend()
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+# -------- Bar Chart --------
+plt.figure()
+plt.bar(months, expenses, label="Monthly Expenses")
+plt.title("Monthly Expense Comparison (Bar Chart)")
+plt.xlabel("Month")
+plt.ylabel("Expenses")
+plt.legend()
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()

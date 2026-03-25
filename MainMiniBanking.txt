@@ -1,0 +1,70 @@
+import bank_code
+
+balance = 0
+
+while True:
+    print("\n\t ****Mini Banking System****")
+    print("1. Deposit")
+    print("2. Withdraw")
+    print("3. Check Balance")
+    print("4. Exit")
+
+    choice = input("Enter your choice:")
+
+    try:
+        if choice == "1":
+            amount = float(input("Enter Deposit amount:"))
+            balance = bank_code.deposit(balance, amount)
+            print("Successful Deposit")
+
+        elif choice == "2":
+            amount = float(input("Enter withdrawal amount:"))
+            balance = bank_code.withdraw(balance, amount)
+            print("Successful Withdraw!")
+
+        elif choice == "3":
+            print("Current Balance:", bank_code.check_balance(balance))
+
+        elif choice == "4":
+            print("Thank you for using the banking system")
+            break
+
+        else:
+            print("Invalid choice, Please try again")
+
+    except bank_code.InsufficientBalanceError as e:
+        print("Error:", e)
+
+
+
+module2(bank_code)
+
+class InsufficientBalanceError(Exception):
+    """Raised when there is insufficient balance."""
+    pass
+
+
+def deposit(balance, amount):
+    if amount <= 0:
+        raise ValueError("Deposit amount must be positive")
+
+    balance = balance + amount
+    return balance
+
+
+
+def withdraw(balance, amount):
+    if amount <= 0:
+        raise ValueError("Withdraw amount must be positive")
+
+    if balance < amount:
+        raise InsufficientBalanceError("Insufficient balance for withdrawal")
+
+    balance = balance - amount
+    return balance
+
+
+
+def check_balance(balance):
+    return balance
+
